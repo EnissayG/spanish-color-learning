@@ -1,17 +1,18 @@
 * {
-    box-sizing: border-box; /* Assure que padding et border sont inclus dans la largeur/hauteur */
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 .header {
-    padding: 5px 20px; /* Ajustement pour un peu de padding sans affecter la largeur totale */
+    padding: 5px 20px;
     text-align: center;
     width: 100%;
     background: #4a47a3;
     color: white;
     font-size: 30px;
-    position: relative; /* Assure qu'il reste en haut mais n'est pas fixed */
+    position: relative;
+    box-sizing: border-box;
 }
 
 body {
@@ -23,7 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding-bottom: 50px; /* Ajustez selon la hauteur de votre footer */
+    padding-bottom: 50px;
 }
 
 .main-container {
@@ -44,7 +45,7 @@ footer {
     position: fixed;
     bottom: 0;
     left: 0;
-    height: 40px; /* Définissez la hauteur de votre footer si nécessaire */
+    height: 40px;
 }
 
 .cl-title {
@@ -52,7 +53,7 @@ footer {
     color: #4a47a3;
     text-align: center;
     margin-bottom: 20px;
-    margin-top: 10px; 
+    margin-top: 10px;
 }
 
 #cl-display {
@@ -70,7 +71,7 @@ footer {
 
 input[type="text"] {
     width: 200px;
-    padding: 8px;
+    padding: 12px;
     margin-top: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -107,25 +108,33 @@ button:active {
     transform: translateY(2px);
 }
 
-
-
-
-
 p {
     font-size: 1.2em;
 }
 
 @media (max-width: 600px) {
-    button {
-        padding: 15px 30px; 
-        font-size: 1.2em; 
+    .header {
+        padding: 10px;
+        font-size: 2em;
+        box-sizing: border-box;
     }
 
-    .cl-title, .header {
-        font-size: 2em; 
+    .cl-title {
+        font-size: 2em;
     }
 
     input[type="text"] {
-        width: 100%; 
+        width: 90%;
+        max-width: 400px; /* Limite la largeur maximale du champ de saisie */
+        padding: 15px;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 1.2em;
     }
 }

@@ -14,6 +14,7 @@ var colors = [
 
 var currentColor = null;
 var audio = new Audio();
+audio.autoplay = true;
 var audioWin = new Audio('audio/goodjob.mp3');
 
 function generate() {
@@ -27,6 +28,7 @@ function generate() {
     document.getElementById('cl-confirmation').textContent = ''; 
 
     audio.src = currentColor.audio;
+    audio.load(); // Précharge le fichier audio
 }
 
 function verify() {
@@ -36,7 +38,9 @@ function verify() {
     if (userInput === currentColor.spanish.toLowerCase()) {
         result.textContent = 'Correct !';
         result.style.color = 'green';
-        audioWin.play();
+        audioWin.play().catch(function(error) {
+            console.error('Error playing win audio:', error);
+        });
     } else {
         result.textContent = 'Incorrect. La bonne réponse est ' + currentColor.spanish + '.';
         result.style.color = 'red';
@@ -45,12 +49,8 @@ function verify() {
 
 function playaudio() {
     if (currentColor && audio) {
-        if (audio.paused) {
-            audio.play().catch(function(error) {
-                console.error('Error playing audio:', error);
-            });
-        } else {
-            audio.currentTime = 0; 
-        }
+        audio.play().catch(function(error) {
+            console.error('Error playing pronunciation audio:', error);
+        });
     }
 }
