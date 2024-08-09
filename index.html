@@ -1,20 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Apprendre les couleurs en espagnol</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </head>
 <body>
-    <h1 class="cl-title">Aprender colores en español / Learn colors in spanish</h1>
-    <div id="cl-display"></div>
-    <label>Color : </label>
-    <input type="text" id="cl-input" placeholder="Enter your answer">
-    <button onclick="generate()">Generate color</button>
-    <button onclick="verify()">Confirmar / Confirm</button>
-    <p id="cl-answer"></p>
-    <p id="cl-confirmation"></p>
+    <div class="header"><h1>Learning with YAYA<h1>
+    </h1></div>
+    <main class="main-container">
+        <h1>Aprender colores en español</h1>
+        <div id="cl-display"></div>
+        <label>Color : </label>
+        <input type="text" id="cl-input" placeholder="Enter your answer">
+        
+        <div class="button-container">
+            <button class="generate" onclick="generate()">Generate color</button>
+            <button class="listen" onclick="playaudio()">Listen to the pronunciation</button>
+            <button class="confirm" onclick="verify()">Confirmar</button>
+        </div>
+
+        <p id="cl-answer"></p>
+        <p id="cl-confirmation"></p>
+    </main>
+    <footer>
+        <p>© 2024 Language Learning. All rights reserved.</p>
+    </footer>
 </body>
 </html>

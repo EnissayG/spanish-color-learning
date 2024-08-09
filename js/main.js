@@ -1,39 +1,52 @@
 var colors = [
-    {name: 'Red', spanish: 'Rojo'},
-    {name: 'Blue', spanish: 'Azul'},
-    {name: 'Green', spanish: 'Verde'},
-    {name: 'Yellow', spanish: 'Amarillo'},
-    {name: 'Black', spanish: 'Negro'},
-    {name: 'White', spanish: 'Blanco'},
-    {name: 'Orange', spanish: 'Naranja'},
-    {name: 'Pink', spanish: 'Rosa'},
-    {name: 'Purple', spanish: 'Morado'},
-    {name: 'Brown', spanish: 'Marrón'},
-    {name: 'Gray', spanish: 'Gris'}
+    {name: 'Red', spanish: 'Rojo', audio: 'audio/rojo.mp3'},
+    {name: 'Blue', spanish: 'Azul', audio: 'audio/azul.mp3'},
+    {name: 'Green', spanish: 'Verde', audio: 'audio/verde.mp3'},
+    {name: 'Yellow', spanish: 'Amarillo', audio: 'audio/amarillo.mp3'},
+    {name: 'Black', spanish: 'Negro', audio: 'audio/negro.mp3'},
+    {name: 'White', spanish: 'Blanco', audio: 'audio/blanco.mp3'},
+    {name: 'Orange', spanish: 'Naranja', audio: 'audio/naranja.mp3'},
+    {name: 'Pink', spanish: 'Rosa', audio: 'audio/rosa.mp3'},
+    {name: 'Purple', spanish: 'Morado', audio: 'audio/morado.mp3'},
+    {name: 'Brown', spanish: 'Marrón', audio: 'audio/marron.mp3'},
+    {name: 'Gray', spanish: 'Gris', audio: 'audio/gris.mp3'}
 ];
 
-function generate(){
-    var div = document.getElementById('cl-display');
-    var answer = document.getElementById('cl-answer');
-    var lenght = colors.length;
-    var index = Math.floor(Math.random() * lenght);
-    var color = colors[index].name;
-    var spanishcolor= colors[index].spanish;
 
-    div.style.backgroundColor= color;
-    currentDisplayColor = spanishcolor;
-    answer.innerText= currentDisplayColor;
+var currentColor = null;
+var audio = new Audio();
+var audioWin = new Audio('audio/goodjob.mp3')
+
+function generate() {
+    var div = document.getElementById('cl-display');
+    var randomIndex = Math.floor(Math.random() * colors.length);
+    currentColor = colors[randomIndex];
+
+    div.style.backgroundColor = currentColor.name.toLowerCase();
+    document.getElementById('cl-answer').textContent = '';
+    document.getElementById('cl-input').value = '';
+    document.getElementById('cl-confirmation').textContent = ''; 
+
+    audio.src = currentColor.audio;
 }
 
 function verify() {
     var userInput = document.getElementById('cl-input').value.trim().toLowerCase();
-    var result = document.getElementById('cl-confirmation');
+    var result = document.getElementById('cl-answer');
 
-    if (userInput === currentDisplayColor.toLowerCase()) {
+    if (userInput === currentColor.spanish.toLowerCase()) {
         result.textContent = 'Correct !';
         result.style.color = 'green';
+        audioWin.play();
     } else {
-        result.textContent = 'Wrong the right color is ' + currentDisplayColor + '.';
+        result.textContent = 'Incorrect. La bonne réponse est ' + currentColor.spanish + '.';
         result.style.color = 'red';
+    }
+}
+
+function playaudio() {
+    if (currentColor) {
+
+        audio.play();
     }
 }
