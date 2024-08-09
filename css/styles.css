@@ -1,3 +1,19 @@
+* {
+    box-sizing: border-box; /* Assure que padding et border sont inclus dans la largeur/hauteur */
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    padding: 5px 20px; /* Ajustement pour un peu de padding sans affecter la largeur totale */
+    text-align: center;
+    width: 100%;
+    background: #4a47a3;
+    color: white;
+    font-size: 30px;
+    position: relative; /* Assure qu'il reste en haut mais n'est pas fixed */
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f9;
@@ -7,6 +23,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    padding-bottom: 50px; /* Ajustez selon la hauteur de votre footer */
 }
 
 .main-container {
@@ -16,6 +33,18 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+footer {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #4a47a3;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 40px; /* Définissez la hauteur de votre footer si nécessaire */
 }
 
 .cl-title {
@@ -78,25 +107,9 @@ button:active {
     transform: translateY(2px);
 }
 
-footer {
-    width: 100%;
-    padding: 10px 0;
-    background-color: #4a47a3;
-    color: #fff;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-}
 
-.header {
-    padding: 5px;
-    text-align: center;
-    width: 100%;
-    background: #4a47a3;
-    color: white;
-    font-size: 30px;
-}
+
+
 
 p {
     font-size: 1.2em;

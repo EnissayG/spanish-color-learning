@@ -12,10 +12,9 @@ var colors = [
     {name: 'Gray', spanish: 'Gris', audio: 'audio/gris.mp3'}
 ];
 
-
 var currentColor = null;
 var audio = new Audio();
-var audioWin = new Audio('audio/goodjob.mp3')
+var audioWin = new Audio('audio/goodjob.mp3');
 
 function generate() {
     var div = document.getElementById('cl-display');
@@ -45,8 +44,13 @@ function verify() {
 }
 
 function playaudio() {
-    if (currentColor) {
-
-        audio.play();
+    if (currentColor && audio) {
+        if (audio.paused) {
+            audio.play().catch(function(error) {
+                console.error('Error playing audio:', error);
+            });
+        } else {
+            audio.currentTime = 0; 
+        }
     }
 }
